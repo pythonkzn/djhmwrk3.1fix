@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Сравнение телефонов</h1>
+        </div>
+        <div class="col s12 m8">
+      <table width="800">
+        <tr>
+                <th>
+                    Модель
+                </th>
+            {% for phone in phones %}
+                <th>
+                    {{ phone.name }} <br>
+                </th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Стоимость</td>
+          {% for phone in phones %}
+            <td>
+              {{ phone.cost }} <br>
+            </td>
+            {% endfor %}
+        </tr>
+          <tr>
+            <td>Операционная система</td>
+          {% for phone in phones %}
+            <td>
+              {{ phone.op_s }} <br>
+            </td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td>Число пикселей на дюйм</td>
+          {% for phone in phones %}
+            <td>
+              {{ phone.pixels }} <br>
+            </td>
+            {% endfor %}
+          </tr>
+            <tr>
+            <td>Оперативная память</td>
+          {% for phone in phones %}
+            <td>
+              {{ phone.ram }} <br>
+            </td>
+            {% endfor %}
+          </tr>
+           <tr>
+            <td>Двойная камера</td>
+          {% for phone in phones %}
+            <td>
+                {% if phone.cam2 %}
+               Есть <br>
+                {% else %}
+                - <br>
+                {% endif %}
+            </td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td>Дополнительно</td>
+          {% for phone in phones %}
+            <td>
+                {% for feature in phone.features.all %}
+              {{ feature}} <br>
+                {% endfor %}
+            </td>
+            {% endfor %}
+          </tr>
+
+
+      </table>
+      </div>
+    </div>
+
+{% endblock %}
